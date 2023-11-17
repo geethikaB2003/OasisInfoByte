@@ -1,0 +1,92 @@
+import java.util.Scanner;
+public class OnlineExamination 
+{
+    private static String username = "";
+    private static String password = "";
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean isLoggedIn = false;
+        while (true) 
+        {
+            if (!isLoggedIn)
+            {
+                System.out.println("1. Login");
+                System.out.println("2. Exit");
+                System.out.print("Choose an option: ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();  
+                switch (choice) 
+                {
+                    case 1:
+                        isLoggedIn = login(scanner);
+                        break;
+                    case 2:
+                        System.out.println("Exiting the program.");
+                        return;
+                    default:
+                        System.out.println("Invalid option. Please try again.");
+                        break;
+                }
+            } 
+            else 
+            {
+                System.out.println("1. Update Profile and Password");
+                System.out.println("2. Select Answers for MCQs");
+                System.out.println("3. Logout");
+                System.out.print("Choose an option: ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();  
+                switch (choice)
+                {
+                    case 1:
+                        updateProfileAndPassword(scanner);
+                        break;
+                    case 2:
+                        selectAnswersForMCQs(scanner);
+                        break;
+                    case 3:
+                        isLoggedIn = logout();
+                        break;
+                    default:
+                        System.out.println("Invalid option. Please try again.");
+                        break;
+                }
+            }
+        }
+    }
+
+    private static boolean login(Scanner scanner)
+    {
+        System.out.print("Enter username: ");
+        username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        password = scanner.nextLine();        
+        if (isValidLogin(username, password))
+        {
+            System.out.println("Login successful!");
+            return true;
+        } 
+        else 
+        {
+            System.out.println("Invalid login credentials.");
+            return false;
+        }
+    }
+    private static boolean isValidLogin(String username, String password) 
+    {        
+        return true;  
+    }
+    private static void updateProfileAndPassword(Scanner scanner)
+    {        
+        System.out.println("Profile and Password updated successfully.");
+    }
+    private static void selectAnswersForMCQs(Scanner scanner) 
+    {        
+        System.out.println("Selecting answers for MCQs...");
+    }
+    private static boolean logout()
+    {        
+        System.out.println("Logged out.");
+        return false;
+    }
+}
